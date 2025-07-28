@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priyanshu Nayak - Software Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .header:hover {
+            transform: translateY(-5px);
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 60px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .name {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .title {
+            font-size: 1.5rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #888;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .contact-item:hover {
+            background: rgba(102, 126, 234, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .about-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .experience-item, .education-item, .project-item {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: rgba(102, 126, 234, 0.05);
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover, .education-item:hover, .project-item:hover {
+            background: rgba(102, 126, 234, 0.1);
+            transform: translateX(10px);
+        }
+
+        .project-title, .education-title, .experience-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .project-tech, .education-details, .experience-details {
+            color: #667eea;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .project-description li, .education-description, .experience-description {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .project-description li::before {
+            content: "▶";
+            color: #667eea;
+            position: absolute;
+            left: 0;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-category {
+            background: rgba(102, 126, 234, 0.05);
+            padding: 25px;
+            border-radius: 15px;
+            border-top: 5px solid #667eea;
+        }
+
+        .skill-category h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            transform: scale(1.05);
+        }
+
+        .achievements-list {
+            display: grid;
+            gap: 20px;
+        }
+
+        .achievement-item {
+            background: rgba(102, 126, 234, 0.05);
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .achievement-item:hover {
+            background: rgba(102, 126, 234, 0.1);
+            transform: translateX(10px);
+        }
+
+        .achievement-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            margin-top: 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 10px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .section:nth-child(even) {
+            animation-delay: 0.2s;
+        }
+
+        .section:nth-child(odd) {
+            animation-delay: 0.4s;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header, .section {
+                padding: 20px;
+            }
+            
+            .name {
+                font-size: 2rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="profile-img">PN</div>
+            <h1 class="name">Priyanshu Nayak</h1>
+            <p class="title">Software Engineer</p>
+            <p class="subtitle">AI/ML Developer | FastAPI, LangChain & GenAI Specialist</p>
+            <div class="contact-info">
+                <a href="tel:+919336126831" class="contact-item">
+                    <span>📞</span> +91-9336126831
+                </a>
+                <a href="mailto:priyanshu.nayak.555@gmail.com" class="contact-item">
+                    <span>📧</span> priyanshu.nayak.555@gmail.com
+                </a>
+                <a href="https://linkedin.com/in/priyanshu–nayak" class="contact-item" target="_blank">
+                    <span>💼</span> LinkedIn
+                </a>
+                <a href="https://github.com/PRIYANSHU2003" class="contact-item" target="_blank">
+                    <span>💻</span> GitHub
+                </a>
+            </div>
+        </header>
+
+        <!-- About Me Section -->
+        <section class="section">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <p>Passionate AI/ML Developer and Computer Science student with expertise in machine learning, computer vision, and full-stack development. I enjoy solving complex problems through innovative technology solutions and have experience working with modern frameworks like FastAPI, LangChain, and various AI models. Always eager to learn new technologies and contribute to impactful projects that make a difference.</p>
+            </div>
+        </section>
+
+        <!-- Professional Experience Section -->
+        <section class="section">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="experience-item">
+                <h3 class="experience-title">Software Engineer Intern</h3>
+                <p class="experience-details">Opkey | Noida, India | 2025</p>
+                <div class="experience-description">
+                    <p>Working on enterprise automation solutions and gaining hands-on experience with modern software development practices and technologies.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section class="section">
+            <h2 class="section-title">Education</h2>
+            <div class="education-item">
+                <h3 class="education-title">B.Tech in Computer Science & Engineering</h3>
+                <p class="education-details">Specialization in AI/ML & IoT | GLA University, Mathura | GPA: 8.56</p>
+                <p class="education-description">Aug 2023 – Aug 2027</p>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="section">
+            <h2 class="section-title">Featured Projects</h2>
+            
+            <div class="project-item">
+                <h3 class="project-title">Intelligent Chatbot with Authentication & Chat History</h3>
+                <p class="project-tech">FastAPI, LangChain, Database Integration, JWT Authentication | 2024</p>
+                <ul class="project-description">
+                    <li>Developed a secure chatbot system with user authentication using database-stored credentials</li>
+                    <li>Implemented chat history functionality to persist conversations across sessions</li>
+                    <li>Built using FastAPI for backend services and integrated with LangChain for advanced conversational AI</li>
+                    <li>Features secure login/logout, session management, and real-time chat capabilities</li>
+                    <li>Designed with scalable architecture to handle multiple concurrent users</li>
+                </ul>
+            </div>
+
+            <div class="project-item">
+                <h3 class="project-title">RAG-Based Question Answering System</h3>
+                <p class="project-tech">LangChain, Vector Databases, LLM Integration, Python | 2024</p>
+                <ul class="project-description">
+                    <li>Built a Retrieval-Augmented Generation (RAG) system for intelligent document querying</li>
+                    <li>Integrated multiple LLM models (OpenAI GPT, Llama, Gemini) for enhanced response generation</li>
+                    <li>Implemented vector embeddings and similarity search for accurate document retrieval</li>
+                    <li>Designed to handle large document collections with efficient indexing and search capabilities</li>
+                    <li>Provides contextually relevant answers by combining retrieval with generative AI</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Technical Skills Section -->
+        <section class="section">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">TypeScript</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Frameworks & Libraries</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">FastAPI</span>
+                        <span class="skill-tag">LangChain</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Streamlit</span>
+                        <span class="skill-tag">PHP</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>AI/ML & GenAI</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">OpenAI GPT</span>
+                        <span class="skill-tag">Meta Llama</span>
+                        <span class="skill-tag">Grok</span>
+                        <span class="skill-tag">Gemini</span>
+                        <span class="skill-tag">Hugging Face</span>
+                        <span class="skill-tag">Prompt Engineering</span>
+                        <span class="skill-tag">Computer Vision</span>
+                        <span class="skill-tag">RAG Systems</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>DevOps & Tools</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">CI/CD</span>
+                        <span class="skill-tag">Kubernetes</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">XAMPP</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Databases</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">Oracle LiveSQL</span>
+                        <span class="skill-tag">Vector Databases</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Core Concepts</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Data Structures & Algorithms</span>
+                        <span class="skill-tag">Operating Systems</span>
+                        <span class="skill-tag">DBMS</span>
+                        <span class="skill-tag">OOP</span>
+                        <span class="skill-tag">Software Engineering</span>
+                        <span class="skill-tag">Agile Development</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements Section -->
+        <section class="section">
+            <h2 class="section-title">Achievements & Activities</h2>
+            <div class="achievements-list">
+                <div class="achievement-item">
+                    <h3 class="achievement-title">LeetCode</h3>
+                    <p>Solved 100+ problems focusing on algorithms and data structures</p>
+                </div>
+                <div class="achievement-item">
+                    <h3 class="achievement-title">Smart India Hackathon</h3>
+                    <p>Participated in national-level hackathon solving real-world industry problems</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p style="margin-bottom: 20px; font-size: 1.1rem; color: #666;">Ready to innovate with AI/ML and build impactful solutions!</p>
+            <a href="mailto:priyanshu.nayak.555@gmail.com" class="cta-button">Get In Touch</a>
+            <a href="https://github.com/PRIYANSHU2003" class="cta-button" target="_blank">View My Work</a>
+        </footer>
+    </div>
+
+    <script>
+        // Add smooth scrolling and interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth reveal animation on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(30px)';
+                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(section);
+            });
+
+            // Add click animations to skill tags
+            document.querySelectorAll('.skill-tag').forEach(tag => {
+                tag.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1.05)';
+                    }, 100);
+                });
+            });
+
+            // Add floating animation to profile image
+            const profileImg = document.querySelector('.profile-img');
+            let floatDirection = 1;
+            setInterval(() => {
+                const currentTransform = profileImg.style.transform;
+                const currentY = currentTransform.includes('translateY') ? 
+                    parseFloat(currentTransform.match(/translateY\(([^)]+)\)/)?.[1] || 0) : 0;
+                
+                const newY = currentY + (floatDirection * 2);
+                if (Math.abs(newY) > 10) floatDirection *= -1;
+                
+                profileImg.style.transform = `translateY(${newY}px)`;
+            }, 100);
+
+            // Add particle effect to header
+            createParticles();
+        });
+
+        function createParticles() {
+            const header = document.querySelector('.header');
+            const particlesCount = 20;
+            
+            for (let i = 0; i < particlesCount; i++) {
+                const particle = document.createElement('div');
+                particle.style.position = 'absolute';
+                particle.style.width = '4px';
+                particle.style.height = '4px';
+                particle.style.background = 'rgba(102, 126, 234, 0.3)';
+                particle.style.borderRadius = '50%';
+                particle.style.pointerEvents = 'none';
+                particle.style.animation = `float ${3 + Math.random() * 4}s infinite ease-in-out`;
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 2 + 's';
+                
+                header.appendChild(particle);
+            }
+        }
+
+        // Add CSS animation for particles
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes float {
+                0%, 100% { transform: translateY(0px) rotate(0deg); }
+                50% { transform: translateY(-20px) rotate(180deg); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
